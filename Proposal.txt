@@ -1,0 +1,83 @@
+Final Project Proposal - Malcolm Scruggs
+
+Summary:
+Create a music visualization applet working off of processing’s sound libraries. 
+Includes multiple different modular visualizations based off different characteristics such as volume or range. 
+Each visualization is planned to be deeply customizable.
+
+Plans:
+Murphy’s Law Plan: Create a couple of visualizations and throw them into the main PApplet. 
+Turn each one off by commenting it out. No real customization and all changes must be made through code. I
+ncomplete and lacking documentation, but still some.
+
+Blue Sky Plan: A complete GUI with customization of each visualization available to the user without having
+ to comment out or change code. Adding music easily / changing music part way through (I am uncertain if 
+Processing’s sound libraries will allow this without some major workaround). Customizations of different types
+ based of range and amplitude. No sound issues, and potentially music player controls 
+(again uncertain if processing sound libraries will allow this).
+
+
+User Story:
+1: Main Screen
+2: pick visualization(s) and song
+3: (optional) customize visualization
+4: view visualization(s)
+5: back to step 1
+
+
+
+MainPApplet - the main class that handles setup, draw dispatch.
+
+GUIMain - main screen of GUI with options for visualizers and songs
+Visualization Selection  - more indepth selection
+Visualization Options - in depth options for a specific visualization
+
+IMusicVisualizer - interface specifing behaviors for a visualizer
+AAmplitdueVisualizer - abstract class for visualizer working of processing's Amplitude analyzer
+AFFTVisualizer - abstract class for visualizers working of processing's FFT analyzer
+	(all subclasses of these are visualizers themselves)
+
+Music Track - data that stores information about the song (artist, title, SoundFile, etc.)
+ColorMode - specifies the type of color settings for a visualizer to use
+
+
+
+																			          Utils
+                                                                                                                                    |      +----------------------+     +-------------------------+     |
+                                                              +----------------------+                                              |      |                      |     |                         |     |
+                                                              |                      |                                              |      |   Music Track  <-------------+MusicTrackBuilder      |     |
+                                                              |   Main PApplet       |                                              |      |                      |     |                         |     |
+                                                              |                      |                                              |      +----------------------++    +-------------------------+     |
+                                                              +-------+---+----------+                                              |                                                                   |
+                                                                      |   |                                                         |                    +--------------------------+                   |
+                    +--------------------------+                      |   |                                                         |                    |                          |                   |
+                    |                          |                      |   |                   +------------------------+            |                    |  ColorMode               |                   |
+                    |       GUIMain           <-----------------------+   |                   |                        |            |                    |                          |                   |
+                    ++                         |                          +------------------->  IMusicVisualizer      |            |                    +--------------------------+                   |
+                    +----------------------+---+                                              |                        |            +-------------------------------------------------------------------+
+                     |                     |                                                  +--------+-------+-------+
++--------------------v---+  +--------------v--------+                                                  |       |
+|                        |  |                       |                            +---------------------v+    +-v-----------------+
+| Visualization Selection   |  Music selection      |                            |                      |    |                   |
+|                        |  |                       |                            |  AAmplitudeVisualizer|    | AFFTVisualizer    |
++-------------------+----+  +-----------------------+                            |              ++      |    ++                  |
+                    |                                                            +----------------------+    +-------------------+
++-------------------v----+                                    +----------------------------+    ||            |  |--------------------------------+
+|                        |                                    |                            |    ||            ++--->                              |
+| Visualization Options  |                                    |  AmplitudeLine           <-------+             | | RangeBars                      |
+|                        |                                    |                            |     |             | |                                |
++------------------------+                                    +----------------------------+     |             | +--------------------------------+
+                                                                                                 |             | |--------------------------------+
+                                                              +----------------------------+     |             +--->                              |
+                                                              |                            |     |             | | LineRange                      |
+                                                              | AmplitudePulse            <------+             | |                                |
+                                                              |                            |                   | +--------------------------------+
+                                                              +----------------------------+                   | |--------------------------------+
+                                                                                                               +--->                              |
+                                                                                                                 | CircleRange                    |
+                                                                                                                 |                                |
+                                                                                                                 +--------------------------------+
+
+
+                                                                            Probably builder's to go with Visualizations
+                                                                            for customization

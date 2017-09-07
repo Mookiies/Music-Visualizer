@@ -1,0 +1,121 @@
+Final Project Report- Malcolm Scruggs
+
+Summary:
+Create a music visualization applet working off of processing’s sound libraries. 
+Includes multiple different modular visualizations based off Amplitude and sound range (FFT). Give
+the user the ability to customize visualizations before they are displayed.
+
+----------------------------------------------------------------------------
+
+How to Use:
+Running:
+1. Run the processing applet
+2. Make selection of visualizer / customization (see selection inforation)
+3. Press play
+4. Watch visualizer
+5. Press back to go back to main GUI screen
+
+
+Selection Information
+Pick visualizer: 
+	-at least 1 visualizer must be selected
+	-selection reset each time
+	-as many visualizers as desired can be combined (see warnings for issues with this)
+	-amplitude pulse: pulsing dot based of song amplitude. Recomended scale: (300 - 1000) 
+	-amplitude line: draws a scolling line based of amplitude. Recomended scale: (100 - 2000)
+	-Range bar: shows range with recangles scaled on activity in range. Recomended scale: (4 - 30)
+	-Range line: shows range with a line scaled on activity in range. Recomended scale: (4 - 20)
+Pick song:
+	-1 song must be selected
+Optional:
+Pick color mode:
+	-not all visualizer support every color mode
+	-progression: changes all color in visualizer over time (supported by all)
+	-rainbow scaled: scales color based of degree of activity (supported by all)
+	-rainbow simple: creates rainbow based on x coordinate (not supported by amplitude pulse
+Pick color:
+	-input R,G,B separated by spaces. Ex: 255 255 0
+	-only affects visualizer set to simple color, or in visualizer not supported by selected mode
+Pick scale:
+	-diffrent for each visualizer. See recomended scale for each visualizer.
+	-reset each time
+
+
+Adding Songs:
+1: add sound file to data folder. For supported formats: ( WAV, AIF/AIFF, MP3 )
+2: add album art to data folder. PNG or JPG. This is optional.
+3: add file to Songs.txt. All fields can be blank, except for "sound_file" set to the name of file
+	-look at bottom entery for example
+Note: program will not crash if added song is not found. Error message is output to console
+
+
+Warnings:
+1: playing multiple visualizers will trigger issue with back, where audio will continue to play
+2: using more than 1 visualizer can cause diffrent start times an cause audio to be out of sync
+	(typically occurs when playing 3 or more)
+
+-------------------------------------------------------------------------------
+Plan from proposal:
+
+Summary:
+Create a music visualization applet working off of processing’s sound libraries. 
+Includes multiple different modular visualizations based off different characteristics such as volume or range. 
+Each visualization is planned to be deeply customizable.
+
+Plans:
+Murphy’s Law Plan: Create a couple of visualizations and throw them into the main PApplet. 
+Turn each one off by commenting it out. No real customization and all changes must be made through code. I
+ncomplete and lacking documentation, but still some.
+
+Blue Sky Plan: A complete GUI with customization of each visualization available to the user without having
+ to comment out or change code. Adding music easily / changing music part way through (I am uncertain if 
+Processing’s sound libraries will allow this without some major workaround). Customizations of different types
+ based of range and amplitude. No sound issues, and potentially music player controls 
+(again uncertain if processing sound libraries will allow this).
+
+Real with dates:
+For the final project I stuck with the original plan entirely, deciding on 4 visualizers.
+Two for amplitude, and two for ranges. For the GUI I decided to limit some of the more
+peculiar changing (setting x, y, speed, bands, etc.) because such customization is
+very dependent on each visualizer and would complicate to GUI. I am pretty much at the
+blue sky plan, with the exception of no issues with the sound library. The issues of it
+playing mono, not stopping with more than one have not been resolved, but warning have
+been built into the GUI.
+
+MILESTONES:
+6/16 - four diffrent working visualizers working in a main class with scaled color
+6/17 - completed IVisualizer interface with implementing abstract classes (AFFTVisualizer &
+       AAmplitudeVisualizer) and four concrete classes, one per unique visualizer.
+6/18 - work on GUI, work on understanding controlP5 get sample buttons working.
+6/19 - get play button and add visualizer working. Complete mapping structure of 
+       how all controlP5.
+6/20 - add song dropdown list, add color dropdown list.
+6/21 - add loading from JSON, color and scale input text field, and album art toggle
+6/23 - complete documentation for code and report.	
+
+----------------------------------------------------------------------------------------
+
+Most Difficult Part:
+For the range visualizers I tried to make the range of actvity more evenly spaced, since the FFT spectrum
+it returns is always significantly more active at the lower ranges. To do this I added the rangeLimiter
+to AFFTVisualizer. This in-theory solves the problem as it lowers the ammount of bands to display from 
+a larger selection to only the lower range. However, due to the limitation of setting the number of bands,
+this solution is not perfect. Using a bands number of 1,024 the problem was solved, however it would
+crash the program 9 out of 10 times.  I wish I could get the FFT to accept
+higher band numbers, but nothing I tried was sucessful. In the end I added increase scaling to
+tones the higher they became, but it isn't perfect especisally with diffrent band numbers.
+I stuck the number of bands as a constant in the main class 
+so it would be easy to change, but didn't add it to the GUI because it introduces a way to 
+easily crash the program.
+
+---------------------------------------------------------------------------------------
+
+Best Part:
+
+I think that the best part of my propgram is the customization. The ability to change
+multiple ways about how a certain song is visualized, like the color mode, simple color,
+scale, and album art, along with layering the visualizers. To use these feature just
+press play and navigate the GUI. It is also fun to tinker with some of the values not set 
+by the gui, but those values have a tendency to have more drastic effects.
+My personal favorite song to visualize is "Can't afford it all", especially with the range
+visualizers.

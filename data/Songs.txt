@@ -1,0 +1,14 @@
+{ "songs": [
+	{  "sound_file": "bloom.mp3", "artist": "Paper Kites", "title": "Bloom", "album": "Woodland - EP", "album_art": "bloomAlbum.jpg" },
+	{  "sound_file": "Can't Afford It All.mp3", "artist": "Jakubi", "title": "Can't Afford It All", "album": "Jakubi", "album_art": "jakubiAlbum.jpg" },
+	{  "sound_file": "Journey - Don't Stop Believing.mp3", "artist": "Journey", "title": "Don't Stop Believing", "album": "Escape", "album_art": "escape.jpg" },
+	{  "sound_file": "abc.mp3", "artist": "Jackson 5", "title": "ABC", "album": "Jacksong 5", "album_art": "abc.jpg" },
+	{  "sound_file": "come back to me.mp3", "artist": "Filous", "title": "Come Back To Me", "album": "Filous Remix", "album_art": "come-back.jpeg" },
+	{  "sound_file": "all of me.mp3", "artist": "John Legend", "title": "All of me", "album": "Love in the Future", "album_art": "loveInTheFutre.jpg" },
+	{  "sound_file": "not local.mp3", "artist": "Manudigital & Queen Omega", "title": "Don't Call Me Local", "album": "Trinidad Sessions", "album_art": "" },
+	{  "sound_file": "jammin.mp3", "artist": "Bob Marley", "title": "Jammin'", "album": "Babylon by Bus", "album_art": "babylonByBus.jpg" },
+	{  "sound_file": "Love Story.mp3", "artist": "Taylor Swift", "title": "Love Story", "album": "Love Story", "album_art": "Taylor_Swift_-_Love_Story.png" },
+	{  "sound_file": "L$D - A$AP Rocky.mp3", "artist": "A$AP Rocky", "title": "L$D", "album": "At. Long. Last.A$AP", "album_art": "AtLongLastASAPCover.jpg" },
+	{  "sound_file": "scales.mp3", "artist": "", "title": "", "album": "", "album_art": "" },
+	]
+}
